@@ -28,20 +28,20 @@ int main(){
 }
 
 void play(int* playerLoc, int* computerLoc){
-  char* choice; //rock,paper,scissors
+  char choice[100]; //rock,paper,scissors
   int result; //0=tie, 1=userWon, 2=compWon
-  printf("What is your choice? ");
-  scanf(" %s\n",choice);
-  printf("Your choice is %s\n",choice); //for debugging
+  printf("\nWhat is your choice? ");
+  scanf("%s",choice);
+
   result = getResult(choice);
   if(result == 0){
     printf("It's a tie!\n");
   }
   else if(result == 1){
-    printf("You won this game!\n");
+    printf("You win this game!\n");
   }
   else if(result == 2){
-    printf("You lost this game!\n");
+    printf("You lose this game!\n");
   }
 
 
@@ -53,24 +53,20 @@ int getResult(char* c){
   char* compChoice;
   srand((unsigned int)time(NULL));
   randInt = rand() % 3;
-  printf("Random int is: %d",randInt);
+
   if(randInt == 0){
     compChoice = "rock";
-    //printf("The computer chooses rock. "); // delete this if successfull
   }
   else if(randInt == 1){
     compChoice = "paper";
-    //printf("The computer chooses paper. ");
   }
   else if(randInt == 2){
-    compChoice = "scissor";
-    //printf("The computer chooses scissors. ");
+    compChoice = "scissors";
   }
-  printf("The computer chooses %s.",compChoice);
+  printf("The computer chooses %s. ",compChoice);
 
 
   if(strcmp(c,"rock") == 0){
-    printf("\nplayer chose rock\n");
 
     if(strcmp(compChoice,"rock") == 0)
       whoWon = 0;
@@ -96,6 +92,6 @@ int getResult(char* c){
     if(strcmp(compChoice,"rock") == 0)
       whoWon = 2;
   }
-  printf("%d",whoWon);
+
   return whoWon; //0 = tie, 1 = player, 2 = computer
 }
